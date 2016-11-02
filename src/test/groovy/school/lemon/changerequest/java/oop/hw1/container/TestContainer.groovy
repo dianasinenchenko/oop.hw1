@@ -1,4 +1,4 @@
-package school.lemon.changerequest.java.hw3.container
+package school.lemon.changerequest.java.oop.hw1.container
 
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -8,6 +8,7 @@ class TestContainer extends Specification {
     def container = new ContainerImpl();
 
     def "Add at the end"() {
+        given:
         int[] elements = new int[Container.INITIAL_ARRAY_SIZE * 2];
         for (int i = 0; i < elements.length; ++i) {
             elements[i] = Math.random() * 1000;
@@ -21,12 +22,13 @@ class TestContainer extends Specification {
         then: "Size should be increased and you can get elements by index"
         container.size() == elements.length
         for (int i = 0; i < elements.length; ++i) {
-            container.get(i) == elements[i]
+            assert container.get(i) == elements[i]
         }
     }
 
     @Unroll
     def "Add by index #index"() {
+        given:
         container.add 1
         container.add 3
 
@@ -34,7 +36,7 @@ class TestContainer extends Specification {
         container.add(element, index) == result
         container.size() == size
         for (int i = 0; i < remainElements.size(); ++i) {
-            container.get(i) == remainElements.get(i)
+            assert container.get(i) == remainElements.get(i)
         }
 
         where:
@@ -48,6 +50,7 @@ class TestContainer extends Specification {
 
     @Unroll
     def "Remove by index #index"() {
+        given:
         container.add 1
         container.add 2
         container.add 3
@@ -56,7 +59,7 @@ class TestContainer extends Specification {
         container.remove(index) == result
         container.size() == size
         for (int i = 0; i < remainElements.size(); ++i) {
-            container.get(i) == remainElements.get(i)
+            assert container.get(i) == remainElements.get(i)
         }
 
         where:
@@ -70,6 +73,7 @@ class TestContainer extends Specification {
 
     @Unroll
     def "Clear"() {
+        given:
         container.add 1
         container.add 2
         container.add 3

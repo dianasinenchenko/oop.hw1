@@ -1,18 +1,20 @@
-package school.lemon.changerequest.java.hw3.employees
+package school.lemon.changerequest.java.oop.hw1.employees
 
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static school.lemon.changerequest.java.hw3.employees.Employee.DEFAULT_SALARY
-import static school.lemon.changerequest.java.hw3.employees.Employee.WORKING_HOURS_PER_MONTH
-import static school.lemon.changerequest.java.hw3.employees.EmployeesFactory.*
+import static Employee.DEFAULT_SALARY
+import static Employee.WORKING_HOURS_PER_MONTH
+import static school.lemon.changerequest.java.oop.hw1.employees.EmployeesFactory.*
 
 class TestEmployees extends Specification {
 
     @Unroll
     def "#employee.getClass().getSimpleName() worked #hours hours"() {
-        expect:
-        employee.work((int) hours)
+        when:
+        employee.work(hours)
+
+        then:
         employee.getWorkedRatio() == (double) workedPercentage
 
         where:
@@ -38,8 +40,10 @@ class TestEmployees extends Specification {
 
     @Unroll
     def "#employee.getClass().getSimpleName() salary for #hours hours"() {
-        expect:
-        employee.work((int) hours)
+        when:
+        employee.work(hours)
+
+        then:
         employee.calculateCurrentMonthSalary() == (double) salary
 
         where:
@@ -70,6 +74,7 @@ class TestEmployees extends Specification {
     }
 
     def "Accountant calculates employees salary"() {
+        given:
         def accountant = createAccountant(500)
         def manager = createManager(1000)
         def programmer = createProgrammer(2000)
@@ -87,9 +92,11 @@ class TestEmployees extends Specification {
 
     @Unroll
     def "#employee.getClass().getSimpleName() working hours are summed up"() {
-        expect:
-        employee.work((int) hours)
-        employee.work((int) hours)
+        when:
+        employee.work(hours)
+        employee.work(hours)
+
+        then:
         employee.getWorkedRatio() == (double) workedPercentage
 
         where:

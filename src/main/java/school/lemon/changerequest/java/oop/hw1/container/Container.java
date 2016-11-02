@@ -1,4 +1,4 @@
-package school.lemon.changerequest.java.hw3.container;
+package school.lemon.changerequest.java.oop.hw1.container;
 
 public interface Container {
 
