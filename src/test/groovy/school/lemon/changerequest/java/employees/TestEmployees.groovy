@@ -1,11 +1,11 @@
-package school.lemon.changerequest.java.oop.hw1.employees
+package school.lemon.changerequest.java.employees
 
 import spock.lang.Specification
 import spock.lang.Unroll
 
 import static Employee.DEFAULT_SALARY
 import static Employee.WORKING_HOURS_PER_MONTH
-import static school.lemon.changerequest.java.oop.hw1.employees.EmployeesFactory.*
+import static EmployeesFactory.*
 
 class TestEmployees extends Specification {
 

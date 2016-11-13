@@ -1,4 +1,4 @@
-package school.lemon.changerequest.java.oop.hw1.container;
+package school.lemon.changerequest.java.container;
 
 public class ContainerImpl implements Container{
 

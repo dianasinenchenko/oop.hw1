@@ -1,4 +1,4 @@
-package school.lemon.changerequest.java.oop.hw1.employees;
+package school.lemon.changerequest.java.employees;
 
 public interface Employee {
 
