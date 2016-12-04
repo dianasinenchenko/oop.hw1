@@ -44,8 +44,8 @@ class TestContainer extends Specification {
         0       | 0     | true   | 3    | [0, 1, 3]
         2       | 1     | true   | 3    | [1, 2, 3]
         4       | 2     | true   | 3    | [1, 3, 4]
-        -1      | -1    | false  | 2    | [1, 2]
-        3       | 3     | false  | 2    | [1, 2]
+        -1      | -1    | false  | 2    | [1, 3]
+        3       | 3     | false  | 2    | [1, 3]
     }
 
     @Unroll
