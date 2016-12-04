@@ -18,7 +18,7 @@ public interface Container {
     /**
      * Get element by {@code index}
      * @param index of the element
-     * @return element at specified {@code index} or {@code null} in case {@code index < 0 || index > size}
+     * @return element at specified {@code index} or {@code null} in case {@code index < 0 || index >= size}
      */
     Integer get(int index);
 
