@@ -90,15 +90,6 @@ class TestBoat extends Specification {
         boat.steerRight() == "turn tiller right"
     }
 
-    def "Compare to greater"() {
-        given:
-        def boat1 = createBoat(1980, "Bayliner", "Extreme", false)
-        def boat2 = createBoat(1980, "Bayliner", "Extreme", true)
-
-        expect:
-        boat1.compareTo(boat2) < 0
-    }
-
     def "Not equals"() {
         given:
         def boat1 = createBoat(1980, "Bayliner", "Extreme", true)
@@ -114,7 +105,7 @@ class TestBoat extends Specification {
         def boat2 = createBoat(1981, "Bayliner1", "Extreme1", true)
 
         expect:
-        !boat1.equals(boat2)
+        boat1.equals(boat2)
     }
 
 }
