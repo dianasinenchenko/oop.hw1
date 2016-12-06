@@ -64,7 +64,7 @@ class TestExtendedInteger extends Specification {
         "0"          | 0
         "1"          | 1
         "12"         | 12
-        "123"        | 123
+        "+123"       | 123
     }
 
     @Unroll
@@ -80,7 +80,7 @@ class TestExtendedInteger extends Specification {
         "0"          | 0
         "1"          | 1
         "12"         | 12
-        "123"        | 123
+        "+123"       | 123
     }
 
     @Unroll
@@ -140,34 +140,36 @@ class TestExtendedInteger extends Specification {
 
     @Unroll
     def "Is equals to int #value"() {
-        given:
-        def extendedInteger = new ExtendedInteger(10)
-
         expect:
-        extendedInteger.equals(value) == isEquals
+        new ExtendedInteger(value2).equals(value1) == (value1 == value2)
 
         where:
-        value | isEquals
-        -1    | false
-        0     | false
-        10    | true
+        value1 | value2
+        3      | -1
+        7      | 0
+        12     | 12
+        -13    | -13
+        -23    | 23
+        -31    | 0
     }
 
     @Unroll
     def "Is equals to ExtendedInteger #value"() {
-        given:
-        def extendedInteger = new ExtendedInteger(10)
-
         expect:
-        extendedInteger.equals(value) == isEquals
-
+        new ExtendedInteger(value1).equals(value2) == equals
         where:
-        value                   | isEquals
-        new ExtendedInteger(-1) | false
-        new ExtendedInteger(0)  | false
-        new ExtendedInteger(10) | true
-        null                    | false
-        new Object()            | false
+
+        value1 | value2                  | equals
+        10     | new ExtendedInteger(-1) | false
+        9      | new ExtendedInteger(0)  | false
+        13     | new ExtendedInteger(13) | true
+        13     | new ExtendedInteger(17) | false
+        23     | null                    | false
+        -27    | new Object()            | false
+        -7     | new ExtendedInteger(0)  | false
+        -10    | new ExtendedInteger(10) | false
+        -3     | new ExtendedInteger(-3) | true
+        0      | new ExtendedInteger(0)  | true
     }
 
     @Unroll
@@ -182,6 +184,7 @@ class TestExtendedInteger extends Specification {
         "a-1"        | _
         "asd"        | _
         ""           | _
+        "s123"       | _
     }
 
     @Unroll
@@ -196,5 +199,6 @@ class TestExtendedInteger extends Specification {
         "a-1"        | _
         "asd"        | _
         ""           | _
+        "s123"       | _
     }
 }

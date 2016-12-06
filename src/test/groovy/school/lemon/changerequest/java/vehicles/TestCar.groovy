@@ -89,6 +89,8 @@ class TestCar extends Specification {
         where:
         value1 | value2
         150    | 150
+        150    | 143
+        147    | 150
         140    | 150
         150    | 140
     }
