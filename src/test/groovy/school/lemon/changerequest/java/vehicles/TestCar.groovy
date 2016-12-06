@@ -1,6 +1,7 @@
 package school.lemon.changerequest.java.vehicles
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 import static school.lemon.changerequest.java.vehicles.VehicleFactory.createCar
 
@@ -82,17 +83,24 @@ class TestCar extends Specification {
         car.steerRight() == "turn wheels right"
     }
 
-    def "Equals"() {
+    @Unroll
+    def "Equals should return #expectedResult for cars with horsepower: #value1 and #value2"() {
         expect:
-        createCar(2016, "Bmw", "X6", value1).equals(createCar(2006, "Audi", "TT", value2))
+        createCar(2016, "Bmw", "X6", value1).equals(createCar(2006, "Audi", "TT", value2)) == expectedResult
 
         where:
-        value1 | value2
-        150    | 150
-        150    | 143
-        147    | 150
-        140    | 150
-        150    | 140
+        value1 | value2 || expectedResult
+        150    | 150    || true
+        150    | 143    || true
+        147    | 150    || true
+        140    | 150    || true
+        150    | 140    || true
+        150    | 139    || false
+        150    | 161    || false
+        150    | 0      || false
+        0      | 150    || false
+        150    | 55     || false
+        150    | 152532 || false
     }
 
 }
