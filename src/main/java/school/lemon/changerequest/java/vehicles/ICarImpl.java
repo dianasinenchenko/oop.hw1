@@ -3,12 +3,11 @@ package school.lemon.changerequest.java.vehicles;
 /**
  * Created by Diana on 15.12.2016.
  */
-public class ICarImpl extends IVehicleImpl implements ICar {
+public class ICarImpl extends IVehicleImpll implements ICar {
     private int horsepower;
 
     public ICarImpl(int manufacturedYear, String make, String model, int horsepower) {
         super(manufacturedYear, make, model);
-
         this.horsepower = horsepower;
     }
 
@@ -35,18 +34,22 @@ public class ICarImpl extends IVehicleImpl implements ICar {
 
     @Override
     public String toString() {
-        return String.format("This car is a %1$d %2$s %3$s with %4$d hp.", getManufacturedYear(), getMake(), getModel(), getHorsepower());
+        //  return  toString(getManufacturedYear());
+        return String.format("This car is a %1$d %2$s %3$s with %4$d hp.", super.getManufacturedYear(), super.getMake(), super.getModel(), getHorsepower());
     }
 
     @Override
-    public boolean equals(Object object)
-    {
-        if (object==null){return false;}
-        if (!(object instanceof ICarImpl)){return false;}
-        ICarImpl iCar = (ICarImpl)object;
+    public boolean equals(Object object) {
+        if (object == null) {
+            return false;
+        }
+        if (!(object instanceof ICarImpl)) {
+            return false;
+        }
+        ICarImpl iCar = (ICarImpl) object;
 
 
-        return Math.abs(horsepower-iCar.getHorsepower())<=10;
+        return Math.abs(horsepower - iCar.getHorsepower()) <= 10;
     }
 
     /**
@@ -57,7 +60,7 @@ public class ICarImpl extends IVehicleImpl implements ICar {
     @Override
     public int getManufacturedYear() {
 
-        return 0;
+        return super.getManufacturedYear();
     }
 
     /**
@@ -67,6 +70,7 @@ public class ICarImpl extends IVehicleImpl implements ICar {
      */
     @Override
     public void setManufacturedYear(int year) {
+        super.setManufacturedYear(year);
 
 
     }
@@ -78,7 +82,7 @@ public class ICarImpl extends IVehicleImpl implements ICar {
      */
     @Override
     public String getMake() {
-        return null;
+        return super.getMake();
     }
 
     /**
@@ -88,6 +92,7 @@ public class ICarImpl extends IVehicleImpl implements ICar {
      */
     @Override
     public void setMake(String make) {
+        super.setMake(make);
 
     }
 
@@ -98,7 +103,7 @@ public class ICarImpl extends IVehicleImpl implements ICar {
      */
     @Override
     public String getModel() {
-        return null;
+        return super.getModel();
     }
 
     /**
@@ -108,6 +113,7 @@ public class ICarImpl extends IVehicleImpl implements ICar {
      */
     @Override
     public void setModel(String model) {
+        super.setModel(model);
 
     }
 
