@@ -1,6 +1,8 @@
 package school.lemon.changerequest.java.extendedinteger;
 
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Integer representation with some additional features
@@ -62,7 +64,16 @@ public class ExtendedInteger {
      */
     public static ExtendedInteger parseInt(char[] value) {
 //Character.isDigit()
-        return null;
+if (value.length == 0){return null;}
+       /* Pattern pattern = Pattern.compile("");
+        Matcher matcher = pattern.matcher(value ); */
+        
+
+        String string = new String(value);
+        ExtendedInteger integer = new ExtendedInteger(new Integer(string));
+        return integer;
+
+
         //TODO: implement me   8
     }
 
@@ -74,7 +85,12 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(String value) {
-        return null;
+        if (value == ""){return null;}
+        String string = new String(value);
+        ExtendedInteger integer = new ExtendedInteger(new Integer(string));
+        return integer;
+
+
         //ExtendedInteger.parseInt(value.toString());
 
 // Character.Digit ()
@@ -144,8 +160,8 @@ public class ExtendedInteger {
             return false;
         }
 
-        ExtendedInteger o = (ExtendedInteger) obj;
-        return getValue() == o.value;//7
+        ExtendedInteger obj1 = (ExtendedInteger) obj;
+        return getValue() == obj1.value;//7
     }
 
 }
